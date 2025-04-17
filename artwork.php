@@ -1,16 +1,28 @@
-<?php 
+<?php
 include_once('header.php');
-include_once('artworks.php');
+include_once('database.php');
+$db = connection();
+
+if (empty($_GET['id'])) {
+    header('location: index.php');
+    exit;
+}
 
 $id = (int) $_GET['id'];
-if($id === 0){
+if ($id === 0) {
     echo 'Aucun id trouvé.';
     exit;
 }
 
-$art = current(array_filter($artworks, function ($artwork) use ($id): bool {
+/*$art = current(array_filter($artworks, function ($artwork) use ($id): bool {
     return $artwork['id'] === $id;
-}));
+}));*/
+
+$sqlrequest = 'SELECT * FROM artworks WHERE id = ?';
+$artstatement = $db->prepare($sqlrequest);
+$artstatement->execute(params: [$id]);
+$art = $artstatement->fetch();
+
 ?>
 
 <main>

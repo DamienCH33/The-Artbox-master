@@ -1,6 +1,8 @@
 <?php 
 include_once('header.php');
-include_once('artworks.php'); 
+include_once('database.php');
+$db = connection();
+$artworks = $db->query('SELECT * FROM artworks ORDER BY id ASC');
 ?>
 
 <main>
