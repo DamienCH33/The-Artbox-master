@@ -1,13 +1,13 @@
 <?php include_once('header.php');?>
 
-<form action="traitement.php" method="POST">
+<form action="submit_form.php" method="POST">
     <div class="form-field">
-        <label for="titre">Titre de l'œuvre</label>
-        <input type="text" name="titre" id="titre">
+        <label for="title">Titre de l'œuvre</label>
+        <input type="text" name="title" id="title">
     </div>
     <div class="form-field">
-        <label for="artiste">Auteur de l'œuvre</label>
-        <input type="text" name="artiste" id="artiste">
+        <label for="artist">Auteur de l'œuvre</label>
+        <input type="text" name="artist" id="artist">
     </div>
     <div class="form-field">
         <label for="image">URL de l'image</label>

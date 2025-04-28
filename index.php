@@ -10,7 +10,7 @@ $artworks = $db->query('SELECT * FROM artworks ORDER BY id ASC');
         <?php foreach ($artworks as $artwork) { ?>
             <article class="oeuvre">
                 <a href="artwork.php?id=<?php echo $artwork['id'] ?>">
-                <img src="img/<?php echo $artwork['image'] ?>" alt="<?php echo $artwork['title'] ?>">
+                <img src="<?php echo $artwork['image'] ?>" alt="<?php echo $artwork['title'] ?>">
                 <h2><?php echo $artwork['title'] ?></h2>
                 <p class="description"><?php echo $artwork['artist'] ?></p>
                 </a>

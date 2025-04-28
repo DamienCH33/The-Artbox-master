@@ -29,7 +29,7 @@ $art = $artstatement->fetch();
     <?php if ($art) { ?>
         <article id="detail-oeuvre">
             <div id="img-oeuvre">
-                <img src="img/<?php echo $art['image'] ?>" alt="<?php echo $art['title'] ?>">
+                <img src="<?php echo $art['image'] ?>" alt="<?php echo $art['title'] ?>">
             </div>
             <div id="contenu-oeuvre">
                 <h1><?php echo $art['title'] ?></h1>
