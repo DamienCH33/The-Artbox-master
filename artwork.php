@@ -14,10 +14,6 @@ if ($id === 0) {
     exit;
 }
 
-/*$art = current(array_filter($artworks, function ($artwork) use ($id): bool {
-    return $artwork['id'] === $id;
-}));*/
-
 $sqlrequest = 'SELECT * FROM artworks WHERE id = ?';
 $artstatement = $db->prepare($sqlrequest);
 $artstatement->execute(params: [$id]);
@@ -39,8 +35,8 @@ $art = $artstatement->fetch();
                 </p>
             </div>
         </article>
-    <?php } else {
-        echo "L'œuvre demandée n'existe pas.";
-    } ?>
+    <?php } else { ?>
+        <p class="error">L'œuvre demandée n'existe pas.</p>
+   <?php } ?>
 </main>
 <?php include_once('footer.php'); ?>

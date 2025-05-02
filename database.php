@@ -6,3 +6,7 @@ function connection(){
         die('Erreur : ' . $error->getMessage());
     }
 }
+
+
+
+

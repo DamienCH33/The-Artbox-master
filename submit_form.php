@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include_once('database.php');
 $db = connection();
@@ -8,10 +9,29 @@ $artist = trim($_POST['artist']);
 $description = trim($_POST['description']);
 $image = trim($_POST['image']);
 
-if (
-    empty($title) || empty($artist) || empty($image ) || empty($description)
-    || !filter_var($image, FILTER_VALIDATE_URL) || strlen($description) < 3
-) {
+$error = [];
+
+if (empty($title)){
+    $error['title'] = "Le titre de l'œuvre est obligatoire.";
+} 
+    
+if(empty($artist)){
+    $error['artist'] = "L'auteur de l'œuvre est obligatoire.";
+}
+ 
+if(empty($image )){
+    $error['image'] = "Le champ image est obligatoire";
+} elseif (!filter_var($image, FILTER_VALIDATE_URL)) {
+    $error['image'] = "L'URL de l'image doit être une URL valide.";
+}
+ 
+if(empty($description)) {
+    $error['description'] = "Le champ description est obligatoire";
+} elseif (     strlen($description) < 3){
+    $error['description'] = "La description doit contenir au moins 3 caractères.";
+}
+if(!empty($error)){
+    $_SESSION['error'] = $error;
     header('location: addart.php');
     exit;
 } else {
